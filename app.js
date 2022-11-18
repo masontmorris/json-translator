@@ -35,7 +35,7 @@ const input = JSON.parse(fs.readFileSync("input/input.json"));
 console.log(input);
 var count = 1;
 
-const outputObj = [];
+const outputObj = {};
 
 async function translateText() {
     for (var key in input) {
@@ -44,7 +44,6 @@ async function translateText() {
         outputObj[count] = output;
         count++;
     }
-    outputObj.splice(0, 1);
     console.log(outputObj);
     fs.writeFileSync("output/output.json", JSON.stringify(outputObj));
 }
