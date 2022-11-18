@@ -33,16 +33,14 @@ translate.key = process.env.GOOGLE_KEY;
 
 const input = JSON.parse(fs.readFileSync("input/input.json"));
 console.log(input);
-var count = 1;
 
 const outputObj = {};
 
 async function translateText() {
     for (var key in input) {
-        const output = await translate(input[count].text, { from: translate.from, to: translate.to });
+        const output = await translate(input[key].text, { from: translate.from, to: translate.to });
         console.log(output);
-        outputObj[count] = output;
-        count++;
+        outputObj[key] = output;
     }
     console.log(outputObj);
     fs.writeFileSync("output/output.json", JSON.stringify(outputObj));
